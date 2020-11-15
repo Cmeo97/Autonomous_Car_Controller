@@ -1,0 +1,28 @@
+<launch>
+	<include file="$(find car_simulation)/launch/ros_assignment.launch"/>
+
+	<node
+		pkg="turtlesim"
+		type="turtle_teleop_key"
+		name="teleop_key"
+	/>
+
+	<param 
+		name="throttle_param" 
+		type="double" 
+		value="2.0" 
+	/>
+	<param 
+		name="steer_param" 
+		type="double" 
+		value="1.0" 
+	/>
+	
+	<node
+		pkg="simple_control"
+		type="simple_control_node"
+		name="simple_ctr"
+	/>
+
+</launch>
+

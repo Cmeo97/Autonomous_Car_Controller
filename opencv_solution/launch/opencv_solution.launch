@@ -1,0 +1,29 @@
+<launch>
+  <include file="$(find car_simulation)/launch/simulation.launch">
+    <!-- <arg name="world_name" value="person.world" /> -->
+  </include>
+
+
+  <node
+    name="opencv_solution_node"
+    pkg="opencv_solution"
+    type="opencv_solution"
+    launch-prefix="xterm -e"
+  />
+
+  <node
+    name="simple_control_node"
+    pkg="simple_control"
+    type="simple_control"
+    launch-prefix="xterm -e"
+    >
+  <param name="throttle_param" value="2.2" />
+  <param name="steer_param" value="1.1" />
+  </node>
+  <node
+    pkg="turtlesim"
+    type="turtle_teleop_key"
+    name="teleop_key"
+    launch-prefix="xterm -e"
+  />
+</launch>

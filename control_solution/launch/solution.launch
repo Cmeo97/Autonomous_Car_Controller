@@ -1,0 +1,34 @@
+<launch>
+	<include file="$(find car_simulation)/launch/ros_assignment.launch"/>
+
+	<param 
+		name="throttle_param" 
+		type="double" 
+		value="2.0" 
+	/>
+	<param 
+		name="steer_param" 
+		type="double" 
+		value="1.0" 
+	/>
+
+	<node
+		pkg="opencv_solution"
+		type="opencv_solution_node"
+		name="opencv_slt"
+	/>
+
+	<node
+		pkg="pcl_solution"
+		type="pcl_solution_node"
+		name="pcl_slt"
+	/>
+	
+	<node
+		pkg="control_solution"
+		type="control_solution_node"
+		name="control_solution_ctr"
+	/>
+
+</launch>
+
