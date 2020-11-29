@@ -1,5 +1,5 @@
 # Final Assignment (Robotics Practicals 4)
-This is the readme file about the final assignment of Robotics Practicals by **Cristian Meo**
+This is the readme file about the final assignment of Robotics Practicals by **Cristian Meo** and **Joris Verhagen**
 This assignment concerns controlling a prius car, by making it able to detect obstacles and people, to avoid objects and stop when people are detected.
 
 The assignment is split in 3 main packages: OpenCV_Solution, PCL_Solution and Control_Solution.
@@ -29,12 +29,12 @@ The simulation can be runned on different scenarios. Look at the manual to see w
 Once the simulation runs, the car should follow the path defined by cones and stop when people are detected. In order to be sure, try to run the simulation more than one time, sometimes it doesn't work. Probably due to simulation instabilities. 
 
 ## OpenCV_solution 
-the opencv_solution package subscribes to the 
+the opencv_solution package subscribes from the 
 `/prius/front_camera/image_raw`
 topic from the prius simulation. It processes the received images using the OpenCV library and publishes the detections as a ROS topic. The opencv_solution is responsible for the detection of people. Every time a person is detected, it will put a rectangle on the person in the simulation. In the control_solution this will ensure that the car brakes when it is in front of a person.
 
 ## PCL_solution
-the pcl_solution package subscribes to the
+the pcl_solution package subscribes from the
 `/point_cloud`
 topic from the prius simulation. The pcl_solution is respensabile of detecting objects. It creates a point cloud and detect all kind of objects around the car, in the case of this assignment, predominantly cones but the ambulance is also detected as an object. From the raw point cloud, first the floor surface is removed, subsequentially the 'clouds' of points are detected and grouped when they exceed a certain threshold. From the pcl_solution, you receive a vector of 'objects' which represents cones. The properties of these objects are (with relevance to our scenario), an x-location, an y-location, and a size.
 Everytime an object is detected, it is shown a green block on the point cloud screen. Moreover, it sends detections to the control node. 
@@ -46,7 +46,7 @@ The used algorithm is the following:
 
 * If no object from the pcl is detected that is within a range of 4 meters and is actually in front of the car, the car goes straight with full throttle. <br>
 * If obastacles are on the left, the car goes to the right with full throttle and viceversa. <br>
-* If a person is detected, the car stops with full braking capacity and the steering and throttle action are set to zero. The car will remain in that position indefinately.
+* If a person is detected, the car stops with full braking capacity and the steering and throttle action are set to zero. The car will remain in that position indefinitely.
 
 
 
