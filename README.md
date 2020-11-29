@@ -1,4 +1,4 @@
-# Final Assignment (Robotics Practicals 4)
+# Final Assignment (Robotics Practicals)
 This is the readme file about the final assignment of Robotics Practicals by **Cristian Meo** and **Joris Verhagen**
 This assignment concerns controlling a prius car, by making it able to detect obstacles and people, to avoid objects and stop when people are detected.
 
